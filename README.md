@@ -49,7 +49,6 @@ You can open the index.html file with any web browser, and serve from a hosting 
 You can add mixtapes SoundCloud urls, too. First get an API key and add it on top of the document like below:
 
 ```yaml
-```yaml
 title: birthday mixtape
 image: https://i.cloudup.com/zL8MU94GNp.jpg
 soundcloud: api-key-here
