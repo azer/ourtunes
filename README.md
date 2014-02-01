@@ -46,4 +46,16 @@ You can open the index.html file with any web browser, and serve from a hosting 
 
 ## Tips & Tricks
 
-A mixtape can consist of
+You can add mixtapes SoundCloud urls, too. First get an API key and add it on top of the document like below:
+
+```yaml
+```yaml
+title: birthday mixtape
+image: https://i.cloudup.com/zL8MU94GNp.jpg
+soundcloud: api-key-here
+
+bul karayi: https://soundcloud.com/veyasin/mode-xl-bul-karayi
+merhaba: https://soundcloud.com/sacmalamaca2/saykan-merhaba-2014
+```
+
+
