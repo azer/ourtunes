@@ -28,7 +28,7 @@ gavur imam isyani: http://tayfabandista.org/dikkat_askersiz_bolge/player/gavur_i
 Now build the app:
 
 ```bash
-$ ourtunes mixtape.json
+$ ourtunes mixtape.yaml
 ```
 
 This command will create a directory called "mixtape" that has an HTML, JavaScript and CSS file:
