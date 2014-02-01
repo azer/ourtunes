@@ -1,0 +1,113 @@
+frame()
+  position absolute
+  top 0
+  left 0
+  width 100%
+  height 100%
+
+border-radius()
+  -webkit-border-radius arguments
+  -moz-border-radius arguments
+  border-radius arguments
+
+center()
+  display -ms-flexbox
+  -ms-flex-pack center
+  -ms-flex-align center
+
+  display -moz-box
+  -moz-box-pack center
+  -moz-box-align center
+
+  display  -webkit-box
+  -webkit-box-pack center
+  -webkit-box-align center
+
+html, body
+  margin 0
+  padding 0
+  width 100%
+  height 100%
+
+body
+  font 12px Helvetica, Arial, sans-serif
+
+.cover
+  frame()
+  position fixed
+  z-index -1
+  background black url(http://farm4.staticflickr.com/3778/8957239009_3e5348b6e5_b.jpg) center center
+  background-image url(https://i.cloudup.com/itAxry3UVF.jpg)
+  background-size cover
+
+.upper
+  frame()
+  z-index 2
+
+.container
+  width 70%
+  margin 8% auto
+
+.header
+  width 300px
+  margin 0
+
+.header svg
+  position fixed
+  width 200px
+  height 200px
+  cursor pointer
+
+.header path
+  fill #fff
+
+.pause, .playing .play
+  display none
+
+.playing .pause
+  display block
+
+.header h1
+  padding 15px 0 0 200px
+  font bold 150px 'Helvetica', Arial, sans-serif
+  color #fff
+  margin 0
+
+.playlist
+  margin 50px 0 0 170px
+  list-style none
+  color #fff
+  font 22px 'Times New Roman', 'Times', serif
+  padding-bottom 50px
+
+.song
+  margin-bottom 10px
+
+.song span
+  padding 5px 5px
+  cursor pointer
+
+.song:hover span
+  background rgba(0, 0, 0, 0.2)
+
+.song.selected span
+  background rgba(0, 0, 0, 0.5)
+
+@media only screen and (min-device-width : 320px) and (max-device-width : 480px)
+  .container
+    width 90%
+    margin-top 0
+
+  .header svg
+    width 75px
+    height 75px
+
+  .header h1
+    padding 13px 0 0 85px
+    font-size 45px
+
+  .playlist
+    margin 20px 0 0 40px
+
+  .exercise-view .num
+    display none

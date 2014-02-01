@@ -1,0 +1,43 @@
+{
+  "name": "ourtunes",
+  "version": "0.0.0",
+  "description": "Command-line tool to roll your own music player",
+  "main": "index.js",
+  "keywords": [
+    "tunes",
+    "free",
+    "music",
+    "muzik",
+    "pirate",
+    "korsan"
+  ],
+  "repository": {
+    "url": "git@github.com:azer/ourtunes.git",
+    "type": "git"
+  },
+  "author": "Azer Koçulu <azer@kodfabrik.com>",
+  "license": "BSD",
+  "bin": {
+    "ourtunes": "./bin/ourtunes.js"
+  },
+  "devDependencies": {
+    "jsify": "0.0.1"
+  },
+  "dependencies": {
+    "browserify": "*",
+    "stylus": "~0.34.1",
+    "attr": "0.0.1",
+    "domquery": "0.0.x",
+    "new-format": "0.0.1",
+    "attrs": "0.0.0",
+    "shuffle-array": "0.0.0",
+    "optimist": "~0.6.0",
+    "js-yaml": "~3.0.1",
+    "mkdirp": "~0.3.5",
+    "default-debug": "0.0.0",
+    "debug": "~0.7.4",
+    "show-help": "0.0.0",
+    "show-version": "0.0.0",
+    "play-url": "0.0.x"
+  }
+}

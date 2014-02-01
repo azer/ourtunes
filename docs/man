@@ -1,0 +1,8 @@
+    USAGE
+
+        ourtunes [document] [options]
+
+    OPTIONS
+
+        -v      --version      Show version and exit.
+        -h      --help         Show this help and exist.
