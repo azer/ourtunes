@@ -2,6 +2,7 @@
 
 require('default-debug')('build,error');
 
+var command = require("new-command")();
 var debug = require("debug")('build');
 var error = require('debug')('error');
 var opt = require('optimist');
@@ -14,17 +15,7 @@ var format = require("new-format");
 var stylus = require("stylus");
 var templates = require("../lib/templates");
 
-var argv = opt
-      .options('port', { alias: 'p' })
-      .options('hostname', { alias: 'o' })
-      .options('version', { alias: 'v' })
-      .options('help', { alias: 'h' })
-      .argv;
-
-if (argv.version) require('show-version');
-if (argv.help || argv._.length == 0) require('show-help');
-
-build(argv._[0]);
+build(command._[0]);
 
 function build (filename) {
   var name = path.basename(filename, '.yaml');
