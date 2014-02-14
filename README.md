@@ -2,7 +2,7 @@
 
 Roll your music player in a few minutes, with single command.
 
-Example Sites: [lullabytunes.org](http://lullabytunes.org), [anarko.org](http://anarko.org), [gezitunes.org](http://gezitunes.org),  [leylatunes.org](http://leylatunes.org)
+Example Sites: [example-mixtape](http://example-mixtape.azer.io), [lullabytunes.org](http://lullabytunes.org), [anarko.org](http://anarko.org), [gezitunes.org](http://gezitunes.org),  [leylatunes.org](http://leylatunes.org)
 
 ## Howto
 
