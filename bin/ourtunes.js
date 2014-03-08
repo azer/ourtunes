@@ -48,7 +48,7 @@ function read (filename) {
   var i = -1;
   var len = unparsed.length;
   while (++i < len) {
-    if (!/(title|image|soundcloud)\:/.test(unparsed[i])) break;
+    if (!/(title|image|soundcloud|screenshot|description)\:/.test(unparsed[i])) break;
   }
 
   var headers = yaml(unparsed.slice(0, i).join('\n'));
@@ -57,6 +57,8 @@ function read (filename) {
   return {
     title: headers.title,
     image: headers.image,
+    description: headers.description,
+    screenshot: headers.screenshot,
     songs: songs
   };
 }
@@ -65,7 +67,8 @@ function writeHTML (name, dir, doc) {
   var html = format(templates['index.html'], {
     name: name,
     title: doc.title,
-    image: doc.image
+    image: doc.image,
+    meta: generateMetaTags(doc)
   });
 
   var target = path.join(dir, name, '/index.html');
@@ -116,4 +119,14 @@ function writeEntry (name, dir, doc) {
   fs.writeFileSync(target, js);
 
   return target;
+}
+
+function generateMetaTags (doc) {
+  var tags = [
+    '<meta property="og:title" content="' + doc.title + '" />',
+    '<meta property="og:image" content="' + (doc.screenshot || doc.image) + '" />',
+    '<link rel="image_src" type="image/jpg" href="' + (doc.screenshot || doc.image) + '" />'
+  ];
+
+  return tags.join('\n ');
 }
