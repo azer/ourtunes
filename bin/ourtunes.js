@@ -5,7 +5,6 @@ require('default-debug')('build,error');
 var command = require("new-command")();
 var debug = require("debug")('build');
 var error = require('debug')('error');
-var opt = require('optimist');
 var browserify = require("browserify");
 var path = require("path");
 var fs = require("fs");
