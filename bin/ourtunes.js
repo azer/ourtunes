@@ -12,6 +12,8 @@ var mkdirp = require("mkdirp");
 var yaml = require("js-yaml").load;
 var format = require("new-format");
 var stylus = require("stylus");
+var parallel = require("parallel-loop");
+var request = require("request");
 var templates = require("../lib/templates");
 
 build(command._[0]);
@@ -25,10 +27,45 @@ function build (filename) {
 
   mkdirp.sync(path.join(dir, name));
 
-  writeHTML(name, dir, doc);
-  writeCSS(name, dir);
-  writeJS(name, dir, doc);
-  writeJSON(name, dir, doc);
+  mix(doc, function () {
+    writeHTML(name, dir, doc);
+    writeCSS(name, dir);
+    writeJS(name, dir, doc);
+    writeJSON(name, dir, doc);
+    //writeEmbedJSON(name, dir, doc);
+  });
+}
+
+function mix (doc, callback) {
+  var sites = [];
+
+  var key;
+  for (key in doc.songs) {
+    if (!/\.json$/.test(doc.songs[key])) continue;
+    sites.push({ name: key, url: doc.songs[key] });
+    delete doc.songs[key];
+  }
+
+  if (sites.length == 0) return callback();
+
+  parallel(sites.length, each, callback);
+
+  function each (done, i) {
+    debug('Calling %s', sites[i].url);
+    request(sites[i].url, function (error, response, body) {
+      if (error) throw error;
+
+      debug('Parsing %s', sites[i].url);
+      body = JSON.parse(body);
+
+      var name;
+      for (name in body.songs) {
+        doc.songs[sites[i].name + ' / ' + name] = body.songs[name];
+      }
+
+      done();
+    });
+  }
 }
 
 function read (filename) {
@@ -68,9 +105,9 @@ function writeHTML (name, dir, doc) {
     name: name,
     title: doc.title,
     image: doc.image,
-    meta: generateMetaTags(doc),
     header: templates['header.html'],
-    playlist: generatePlaylist(doc)
+    playlist: generatePlaylist(doc),
+    url: doc.url || ''
   });
 
   var target = path.join(dir, name, '/index.html');
@@ -83,6 +120,16 @@ function writeJSON (name, dir, doc) {
   var target = path.join(dir, name, '/api.json');
   debug('Writing %s', target);
   fs.writeFileSync(target, JSON.stringify(doc, null, '\t'));
+}
+
+function writeEmbedJSON (name, dir, doc) {
+  var target = path.join(dir, name, '/embed.json');
+  debug('Writing %s', target);
+  fs.writeFileSync(target, format(templates['embed.json'], {
+    title: doc.title,
+    url: doc.url || '',
+    image: doc.image
+  }));
 }
 
 function writeCSS (name, dir) {
@@ -126,16 +173,6 @@ function writeEntry (name, dir, doc) {
   fs.writeFileSync(target, js);
 
   return target;
-}
-
-function generateMetaTags (doc) {
-  var tags = [
-    '<meta property="og:title" content="' + doc.title + '" />',
-    '<meta property="og:image" content="' + (doc.screenshot || doc.image) + '" />',
-    '<link rel="image_src" type="image/jpg" href="' + (doc.screenshot || doc.image) + '" />'
-  ];
-
-  return tags.join('\n ');
 }
 
 function generatePlaylist (doc) {

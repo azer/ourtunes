@@ -1,0 +1,14 @@
+{
+  "type": "audio",
+  "version": "1.0",
+  "provider_name": "{title}",
+  "provider_url": "{url}",
+  "title": "{title}",
+  "html": "<iframe src='/embed.html' width='600' height='150' frameborder='0' title='{title}' webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>",
+  "width": 600,
+  "height": 150,
+  "description": "Play {title}!",
+  "thumbnail_url": "{image}",
+  "thumbnail_width": 1280,
+  "thumbnail_height": 720
+}
