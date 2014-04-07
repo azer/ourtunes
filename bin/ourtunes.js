@@ -80,7 +80,7 @@ function writeHTML (name, dir, doc) {
 }
 
 function writeJSON (name, dir, doc) {
-  var target = path.join(dir, name, '/' + name + '.json');
+  var target = path.join(dir, name, '/api.json');
   debug('Writing %s', target);
   fs.writeFileSync(target, JSON.stringify(doc, null, '\t'));
 }
