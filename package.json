@@ -1,6 +1,6 @@
 {
   "name": "ourtunes",
-  "version": "1.0.3",
+  "version": "1.1.0",
   "description": "Command-line tool to roll your own music player",
   "main": "index.js",
   "keywords": [
