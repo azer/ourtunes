@@ -29,6 +29,7 @@ function build (filename) {
   writeHTML(name, dir, doc);
   writeCSS(name, dir);
   writeJS(name, dir, doc);
+  writeJSON(name, dir, doc);
 }
 
 function read (filename) {
@@ -68,13 +69,21 @@ function writeHTML (name, dir, doc) {
     name: name,
     title: doc.title,
     image: doc.image,
-    meta: generateMetaTags(doc)
+    meta: generateMetaTags(doc),
+    header: templates['header.html'],
+    playlist: generatePlaylist(doc)
   });
 
   var target = path.join(dir, name, '/index.html');
 
   debug('Writing %s', target);
   fs.writeFileSync(target, html);
+}
+
+function writeJSON (name, dir, doc) {
+  var target = path.join(dir, name, '/' + name + '.json');
+  debug('Writing %s', target);
+  fs.writeFileSync(target, JSON.stringify(doc, null, '\t'));
 }
 
 function writeCSS (name, dir) {
@@ -111,8 +120,7 @@ function writeJS (name, dir, doc) {
 function writeEntry (name, dir, doc) {
   var target = path.join(dir, name,  '/_entry.js');
   var js = format(templates['entry.js'], {
-    options: JSON.stringify({ soundcloud: doc.soundcloud }),
-    songs: JSON.stringify(doc.songs, null, '  ')
+    options: JSON.stringify({ soundcloud: doc.soundcloud })
   });
 
   debug('Writing %s temporarily.', target);
@@ -129,4 +137,20 @@ function generateMetaTags (doc) {
   ];
 
   return tags.join('\n ');
+}
+
+function generatePlaylist (doc) {
+  var songs = [];
+
+  var name;
+  for (name in doc.songs) {
+    songs.push(format(templates['song.html'], {
+      title: name,
+      url: doc.songs[name]
+    }));
+  }
+
+  return format(templates['playlist.html'], {
+    songs: songs.join('\n')
+  });
 }

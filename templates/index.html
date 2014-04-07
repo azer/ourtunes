@@ -7,9 +7,13 @@
     <link href="{name}.css"  rel="stylesheet" media="screen" />
     {meta}
   </head>
-  <body class="debug">
+  <body>
+    <h1 class="title">{title}</h1>
     <div class="cover" style="background-image: url({image})"></div>
-    <div class="container"></div>
+    <div class="container">
+      {header}
+      {playlist}
+    </div>
   </body>
   <script type="text/javascript" src="{name}.js"></script>
 </html>
