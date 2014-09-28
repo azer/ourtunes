@@ -24,7 +24,7 @@
     "jsify": "0.0.1"
   },
   "dependencies": {
-    "browserify": "*",
+    "browserify": "3.x",
     "stylus": "~0.34.1",
     "attr": "0.0.1",
     "domquery": "0.0.x",
