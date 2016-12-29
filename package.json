@@ -30,7 +30,7 @@
     "domquery": "0.0.x",
     "new-format": "azer/new-format",
     "attrs": "azer/attrs",
-    "shuffle-array": "azer/shuffle-array",
+    "shuffle-array": "shuffle-array",
     "js-yaml": "~3.0.1",
     "mkdirp": "~0.3.5",
     "default-debug": "azer/default-debug",
