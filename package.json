@@ -28,18 +28,18 @@
     "stylus": "~0.34.1",
     "attr": "0.0.1",
     "domquery": "0.0.x",
-    "new-format": "0.0.1",
-    "attrs": "0.0.0",
-    "shuffle-array": "0.0.0",
+    "new-format": "azer/new-format",
+    "attrs": "azer/attrs",
+    "shuffle-array": "azer/shuffle-array",
     "js-yaml": "~3.0.1",
     "mkdirp": "~0.3.5",
-    "default-debug": "0.0.0",
+    "default-debug": "azer/default-debug",
     "debug": "~0.7.4",
-    "play-url": "0.0.x",
-    "new-command": "0.0.x",
+    "play-url": "azer/play-url",
+    "new-command": "azer/new-command",
     "parallel-loop": "0.0.0",
     "request": "~2.34.0",
     "page": "~1.3.7",
-    "to-slug": "0.0.0"
+    "to-slug": "azer/to-slug"
   }
 }
