@@ -27,7 +27,7 @@
     "browserify": "3.x",
     "stylus": "~0.34.1",
     "attr": "azer/attr",
-    "domquery": "0.0.x",
+    "domquery": "npm-dom/domquery",
     "new-format": "azer/new-format",
     "attrs": "azer/attrs",
     "shuffle-array": "0.0.0",
